@@ -13,12 +13,15 @@ const memoryRoutes = require('./routes/memoryRoutes');
 const errorMiddleware = require('./middleware/errorMiddleware');
 require('dotenv').config();
 
+const cors = require('cors'); // Add this line
+
 const app = express();
 
 // Connect to the database
 connectDB();
 
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
